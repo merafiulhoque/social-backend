@@ -4,7 +4,7 @@ import { UserCreationData } from "../types";
 import { hashPass } from "../utils/hashPass";
 
 
-export const createUser = async ({name, email, password}: UserCreationData) => {
+export const createUser = async ({name, email, password}: UserCreationData): Promise<void> => {
     const ifUserAlreadyExists = await prisma.user.findUnique({
         where: {email}
     })

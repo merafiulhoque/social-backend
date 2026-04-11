@@ -3,7 +3,7 @@ import prisma from "../lib/prisma";
 import { LoginData } from "../types";
 import { generateToken, isPasswordCorrect } from "../utils/hashPass";
 
-export const login = async ({email, password}: LoginData) => {
+export const login = async ({email, password}: LoginData): Promise<AppError | string> => {
     const userByEmail = await prisma.user.findUnique({
         where: {email}
     })
