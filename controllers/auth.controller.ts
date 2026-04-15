@@ -4,8 +4,8 @@ import { AppError } from "../globalHandlers/AppError";
 import { login } from "../helpers/login";
 import { UserCreationData } from "../types";
 import { createUser } from "../helpers/createUser";
-import { userSignUpSchema } from "../validation/userSchema";
-import { loginSchema } from "../validation/userSchema";
+import { userSignUpSchema } from "../validation/dataValidation/userSchema";
+import { loginSchema } from "../validation/dataValidation/userSchema";
 
 export const loginController = asyncHandler(
     async (req: Request, res: Response) => {

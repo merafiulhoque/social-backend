@@ -11,7 +11,6 @@ export const login = async ({email, password}: LoginData): Promise<AppError | st
     if(!userByEmail){
         throw new AppError("No user exists with this email", 403)
     }
-    console.log(userByEmail.password)
     const isPassCorrect = await isPasswordCorrect(password, userByEmail.password)
     if(!isPassCorrect){
         throw new AppError("Incorrect credentials", 403)

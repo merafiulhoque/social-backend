@@ -1,4 +1,4 @@
-
+import { MulterError } from "multer";
 import { AppError } from "./AppError";
 
 const errorHandler = (err: any, req: any, res: any, next: any) => {
@@ -9,6 +9,13 @@ const errorHandler = (err: any, req: any, res: any, next: any) => {
             success: false,
             message: err.message,
         });
+    }
+
+    if (err instanceof MulterError) {
+        return res.status(422).json({
+            success: false,
+            message: err.message
+        })
     }
 
     // unknown errors
